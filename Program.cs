@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace console_desafio21dias_api
 {
@@ -30,13 +31,50 @@ namespace console_desafio21dias_api
         //   Console.WriteLine(i);
         // }
 
-        // int[] itens = new int[]{1,2,3,4,5,6,7,8,9,10};
-        // foreach(int item in itens)
-        // {
-        //   Console.WriteLine(item);
-        // }
+
+        // int[][] alunos;
+
+        // alunos[0][0] = "Danilo";
+        // alunos[1][0] = "001";
+        // alunos[2][0] = "10, 8, 5";
+
+        // alunos[0][1] = "Jaison";
+        // alunos[1][1] = "001";
+        // alunos[2][1] = "10, 8, 5";
+
+        // alunos[0][2] = "Sheila";
+        // alunos[1][2] = "001";
+        // alunos[2][2] = "10, 8, 5";
 
 
+        List<dynamic> alunos = new List<dynamic>();
+        alunos.Add(new {
+          Nome = "Danilo",
+          Matricula = "001",
+          Notas = "10, 8, 7"
+        });
+
+        alunos.Add(new {
+          Nome = "Sheila",
+          Matricula = "001",
+          Notas = "10, 8, 7"
+        });
+
+        alunos.Add(new {
+          Nome = "Stela",
+          Matricula = "001",
+          Notas = "10, 8, 7"
+        });
+
+        foreach(var aluno in alunos)
+        {
+          Console.WriteLine("-------------------");
+          Console.WriteLine($"Nome: {aluno.Nome}");
+          Console.WriteLine($"Matricula: {aluno.Matricula}");
+          Console.WriteLine($"Notas: {aluno.Notas}");
+        }
+
+        return;
 
         while(true)
         {
