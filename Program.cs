@@ -63,118 +63,180 @@ namespace console_desafio21dias_api
         Faça um programa para resolver a questão da Valkiria
         */
 
+        Console.WriteLine("Bem vinda, Valkiria!\n");
+        var opcao = "s";
+        var nome = "";
+        var matricula = "";
+        var resultado = "";
         List<dynamic> alunos = new List<dynamic>();
-        alunos.Add(new {
-          Nome = "Danilo",
-          Matricula = "001",
-          Notas = "10, 8, 7"
-        });
-
-        alunos.Add(new {
-          Nome = "Sheila",
-          Matricula = "001",
-          Notas = "10, 8, 7"
-        });
-
-        alunos.Add(new {
-          Nome = "Stela",
-          Matricula = "001",
-          Notas = "10, 8, 7"
-        });
-
+        while(opcao.ToLower() == "s")
+        {
+            Console.WriteLine("Digite o nome do aluno:");
+            nome = Console.ReadLine();
+            Console.WriteLine("Digite a matrícula do aluno:");
+            matricula = Console.ReadLine();
+            Console.WriteLine("Digite as notas do aluno:");
+            double[] notas = new double[3];
+            double soma = 0;
+            double media = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($"{i + 1}ª nota:");
+                notas[i] = Convert.ToDouble(Console.ReadLine());
+                soma += notas[i];
+            }
+            media = soma/notas.Length;
+            if(media >= 7)
+            {
+                resultado = "Aprovado";
+            }
+            else
+            {
+                resultado = "Reprovado";
+            }
+            alunos.Add(new{
+                Nome = nome,
+                Matricula = matricula,
+                Notas = notas,
+                Media = media,
+                Situacao = resultado
+            });
+            
+            Console.Clear();
+            Console.WriteLine("Cadastrar outro aluno? s/n");
+            opcao = Console.ReadLine();
+        }
+        Console.Clear();
         foreach(var aluno in alunos)
         {
-          Console.WriteLine("-------------------");
-          Console.WriteLine($"Nome: {aluno.Nome}");
-          Console.WriteLine($"Matricula: {aluno.Matricula}");
-          Console.WriteLine($"Notas: {aluno.Notas}");
+            Console.WriteLine("────────────────────────────────");
+            Console.WriteLine($"Nome: {aluno.Nome} - Matrícula: {aluno.Matricula}");
+            Console.WriteLine("────────────────────────────────");
+            Console.WriteLine($"Notas:");
+            int n = 1;
+            foreach(double nota in aluno.Notas)
+            {
+                Console.WriteLine($"{n}ª nota: {nota}");
+                n += 1;
+            }
+            Console.WriteLine($"Média: {Math.Round(aluno.Media,1)} - Situação: {aluno.Situacao}");
         }
+        Console.WriteLine("────────────────────────────────");
 
-        return;
+        
+        
+        // List<dynamic> alunos = new List<dynamic>();
+        // alunos.Add(new {
+        //   Nome = "Danilo",
+        //   Matricula = "001",
+        //   Notas = "10, 8, 7"
+        // });
 
-        while(true)
-        {
-          Console.WriteLine("Digite\n1 - para sair\n0 - para continuar");
-          int sair = Convert.ToInt32(Console.ReadLine());
-          if(sair == 1) break;
-          else if(sair == 2) continue;
+        // alunos.Add(new {
+        //   Nome = "Sheila",
+        //   Matricula = "001",
+        //   Notas = "10, 8, 7"
+        // });
 
-          Console.WriteLine("Opaaaa estou por aqui");
-        }
+        // alunos.Add(new {
+        //   Nome = "Stela",
+        //   Matricula = "001",
+        //   Notas = "10, 8, 7"
+        // });
 
+        // foreach(var aluno in alunos)
+        // {
+        //   Console.WriteLine("-------------------");
+        //   Console.WriteLine($"Nome: {aluno.Nome}");
+        //   Console.WriteLine($"Matricula: {aluno.Matricula}");
+        //   Console.WriteLine($"Notas: {aluno.Notas}");
+        // }
 
+        // return;
 
-        return;
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        int caseSwitch = 2;
+        // while(true)
+        // {
+        //   Console.WriteLine("Digite\n1 - para sair\n0 - para continuar");
+        //   int sair = Convert.ToInt32(Console.ReadLine());
+        //   if(sair == 1) break;
+        //   else if(sair == 2) continue;
 
-        if(caseSwitch == 1)
-        {
-            Console.WriteLine("Case 1");
-        }
-        else if(caseSwitch == 2)
-        {
-            Console.WriteLine("Case 2");
-        }
-        else
-        {
-            Console.WriteLine("Default case");
-        }
+        //   Console.WriteLine("Opaaaa estou por aqui");
+        // }
 
 
-        switch (caseSwitch)
-        {
-            case 1:
-                Console.WriteLine("Case 1");
-                break;
-            case 2:
-                Console.WriteLine("Case 2");
-                break;
-            default:
-                Console.WriteLine("Default case");
-                break;
-        }
+
+        // return;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        // int caseSwitch = 2;
+
+        // if(caseSwitch == 1)
+        // {
+        //     Console.WriteLine("Case 1");
+        // }
+        // else if(caseSwitch == 2)
+        // {
+        //     Console.WriteLine("Case 2");
+        // }
+        // else
+        // {
+        //     Console.WriteLine("Default case");
+        // }
+
+
+        // switch (caseSwitch)
+        // {
+        //     case 1:
+        //         Console.WriteLine("Case 1");
+        //         break;
+        //     case 2:
+        //         Console.WriteLine("Case 2");
+        //         break;
+        //     default:
+        //         Console.WriteLine("Default case");
+        //         break;
+        // }
 
 
       //camelCase
       //PascalCase
       //unders_core
 
-      Console.WriteLine("Digite o primeiro número");
-      var numeroUm = 11;//Convert.ToInt32(Console.ReadLine());
+      // Console.WriteLine("Digite o primeiro número");
+      // var numeroUm = 11;//Convert.ToInt32(Console.ReadLine());
 
-      Console.WriteLine("Digite o segundo número");
-      int numeroDois = 20;//Convert.ToInt32(Console.ReadLine());
+      // Console.WriteLine("Digite o segundo número");
+      // int numeroDois = 20;//Convert.ToInt32(Console.ReadLine());
 
-      var soma = numeroUm * numeroDois;
+      // var soma = numeroUm * numeroDois;
 
       // Console.WriteLine($"Qual é o resultado da soma dos números {numeroUm} + {numeroDois} ?");
-      Console.WriteLine($"Digite o numero premiado?");
-      int resultado = 20;//Convert.ToInt32(Console.ReadLine());
+      // Console.WriteLine($"Digite o numero premiado?");
+      // int resultado = 20;//Convert.ToInt32(Console.ReadLine());
 
-      if (soma == resultado || resultado == 1 || resultado == 10 || (resultado >= 100 && resultado <= 200))
-      {
-        Console.WriteLine($"Parabéns você acertou o resulado: {soma}");
-      }
-      else if (resultado == 20)
-      {
-        Console.WriteLine($"Você acertou a opção extraordinária, incrivel");
-      }
-      else
-      {
-        Console.WriteLine($"O resultado é {soma}, você errou, tente novamente na próxima");
-      }
+      // if (soma == resultado || resultado == 1 || resultado == 10 || (resultado >= 100 && resultado <= 200))
+      // {
+      //   Console.WriteLine($"Parabéns você acertou o resulado: {soma}");
+      // }
+      // else if (resultado == 20)
+      // {
+      //   Console.WriteLine($"Você acertou a opção extraordinária, incrivel");
+      // }
+      // else
+      // {
+      //   Console.WriteLine($"O resultado é {soma}, você errou, tente novamente na próxima");
+      // }
     }
   }
 }
