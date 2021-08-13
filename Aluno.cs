@@ -66,25 +66,35 @@ namespace console_desafio21dias_api
     #region Metodos de classe ou staticos
     private static string connectionString()
     {
+      // create database desafio21diasapi
+      /*
+        CREATE TABLE Alunos (
+            id int IDENTITY(1,1) PRIMARY KEY,
+            nome varchar(150) NOT NULL,
+            matricula varchar(15) NOT NULL,
+            notas varchar(255)
+        );
+      */
       return "Server=localhost;database=desafio21diasapi;user=sa;password=!1#2a3d4c5g6v";
     }
 
     public static void Incluir(Aluno aluno)
     {
-      SqlConnection sqlConn = new SqlConnection(connectionString());
-      sqlConn.Open();
-      
-      SqlCommand sqlCommand = new SqlCommand($"insert into alunos(nome, matricula, notas)values(@nome, @matricula, @notas)", sqlConn);
-      sqlCommand.Parameters.Add("@nome", SqlDbType.VarChar);
-      sqlCommand.Parameters["@nome"].Value = aluno.Nome;
+      using(SqlConnection sqlConn = new SqlConnection(connectionString()))
+      {
+        sqlConn.Open();
+        
+        SqlCommand sqlCommand = new SqlCommand($"insert into alunos(nome, matricula, notas)values(@nome, @matricula, @notas)", sqlConn);
+        sqlCommand.Parameters.Add("@nome", SqlDbType.VarChar);
+        sqlCommand.Parameters["@nome"].Value = aluno.Nome;
 
-      sqlCommand.Parameters.AddWithValue("@matricula", aluno.Matricula);
-      sqlCommand.Parameters.AddWithValue("@notas", string.Join(",", aluno.Notas.ToArray()));
-      
-      sqlCommand.ExecuteNonQuery();
+        sqlCommand.Parameters.AddWithValue("@matricula", aluno.Matricula);
+        sqlCommand.Parameters.AddWithValue("@notas", string.Join(",", aluno.Notas.ToArray()));
+        
+        sqlCommand.ExecuteNonQuery();
 
-      sqlConn.Close();
-      sqlConn.Dispose();
+        sqlConn.Close();
+      }
     }
     public static void Atualizar(Aluno aluno)
     {
@@ -97,7 +107,7 @@ namespace console_desafio21dias_api
       sqlCommand.Parameters.AddWithValue("@matricula", aluno.Matricula);
       sqlCommand.Parameters.AddWithValue("@notas", string.Join(",", aluno.Notas.ToArray()));
       sqlCommand.ExecuteNonQuery();
-      
+
       sqlConn.Close();
       sqlConn.Dispose();
     }
