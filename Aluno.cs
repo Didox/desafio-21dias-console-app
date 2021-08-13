@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace console_desafio21dias_api
 {
-  partial class Aluno
+  class Aluno
   {
     #region "Propriedades"
     public int Id { get; set; }
@@ -46,18 +46,18 @@ namespace console_desafio21dias_api
 
     public void Apagar()
     {
-      Aluno.ApagarPorId(this.Id);
+      AlunoService.ApagarPorId(this.Id);
     }
 
     public void Salvar()
     {
       if(this.Id > 0)
       {
-        Aluno.Atualizar(this);
+        AlunoService.Atualizar(this);
       }
       else
       {
-        Aluno.Incluir(this);
+        AlunoService.Incluir(this);
       }
     }
 

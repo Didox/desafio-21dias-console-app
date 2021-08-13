@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace console_desafio21dias_api
 {
-  partial class Aluno
+  class AlunoService
   {
     #region Metodos de classe ou staticos
     private static string connectionString()
