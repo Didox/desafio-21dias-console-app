@@ -7,6 +7,29 @@ namespace console_desafio21dias_api
   {
     static void Main(string[] args)
     {
+      // new Aluno(){Nome = "Gilmar", Matricula = "003", Notas = new List<double>() {6, 6, 9} }.Salvar();
+      // new Aluno(){Nome = "Raul", Matricula = "004", Notas = new List<double>() {5, 6, 3} }.Salvar();
+      // new Aluno(){Nome = "Marina", Matricula = "005", Notas = new List<double>() {9, 9, 10} }.Salvar();
+
+
+      var alunosNoBanco = Aluno.Todos();
+      foreach(var aluno in alunosNoBanco)
+      {
+        // aluno.Notas.Add(10);
+        // aluno.Salvar();
+        // aluno.Apagar();
+        // break;
+
+        Console.WriteLine("────────────────────────────────");
+        Console.WriteLine($"Nome: {aluno.Nome}");
+        Console.WriteLine($"Matrícula: {aluno.Matricula}");
+        Console.WriteLine($"Notas: {string.Join(",", aluno.Notas.ToArray())}");
+        Console.WriteLine($"Média: {aluno.CalcularMedia()}");
+        Console.WriteLine($"Situação: {aluno.Situacao()}");
+        Console.WriteLine("────────────────────────────────");
+      }
+
+      return;
         
         /*
         Daniel é um agricultor e precisa de um programa que ao digitar o numero inicial 1 e final 10, o programa mostra
